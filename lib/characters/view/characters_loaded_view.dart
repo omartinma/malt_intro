@@ -33,13 +33,28 @@ class CharacterItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          Expanded(child: Image.network(character.image)),
-          Expanded(child: Text(character.name)),
-        ],
-      ),
+    return Stack(
+      children: [
+        Image.network(character.image),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            color: Colors.white70,
+            padding: const EdgeInsets.all(5),
+            child: Center(
+              child: Text(
+                character.name,
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
