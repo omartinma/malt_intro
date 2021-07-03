@@ -13,6 +13,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:malt_intro/l10n/l10n.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 
 class MockCharacterRepository extends Mock implements CharacterRepository {}
 
@@ -21,20 +22,22 @@ extension PumpApp on WidgetTester {
     Widget widget, {
     CharacterRepository? characterRepository,
   }) {
-    return pumpWidget(
-      MultiRepositoryProvider(
-        providers: [
-          RepositoryProvider.value(
-            value: characterRepository ?? MockCharacterRepository(),
-          ),
-        ],
-        child: MaterialApp(
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
+    return mockNetworkImages(
+      () => pumpWidget(
+        MultiRepositoryProvider(
+          providers: [
+            RepositoryProvider.value(
+              value: characterRepository ?? MockCharacterRepository(),
+            ),
           ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          home: widget,
+          child: MaterialApp(
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.supportedLocales,
+            home: widget,
+          ),
         ),
       ),
     );
