@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:malt_intro/l10n/l10n.dart';
 
 class CharactersErrorView extends StatelessWidget {
   const CharactersErrorView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Oops, something went wrong'),
+    final l10n = context.l10n;
+    return Center(
+      child: Text(l10n.errorViewMessage),
     );
   }
 }
