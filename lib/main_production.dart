@@ -8,19 +8,25 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:character_repository/character_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bloc/bloc.dart';
 import 'package:malt_intro/app/app.dart';
 import 'package:malt_intro/app/app_bloc_observer.dart';
+import 'package:rick_and_morty_api/rick_and_morty_api.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+  final rickAndMortyApi = RickAndMortyApi();
+  final characterRepository = CharacterRepository(
+    rickAndMortyApi: rickAndMortyApi,
+  );
 
   runZonedGuarded(
-    () => runApp(const App()),
+    () => runApp(App(characterRepository: characterRepository)),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
