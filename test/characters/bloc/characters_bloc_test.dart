@@ -5,7 +5,6 @@ import 'package:character_repository/character_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:malt_intro/characters/characters.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:rick_and_morty_api/rick_and_morty_api.dart';
 
 class MockCharacterRepository extends Mock implements CharacterRepository {}
 
