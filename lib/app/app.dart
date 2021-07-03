@@ -9,7 +9,7 @@ import 'package:character_repository/character_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:malt_intro/characters/view/characters_page.dart';
+import 'package:malt_intro/characters/characters.dart';
 import 'package:malt_intro/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -25,17 +25,13 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider.value(value: _characterRepository),
       ],
-      child: MaterialApp(
-        theme: ThemeData(
-          accentColor: const Color(0xFF13B9FF),
-          appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-        ),
-        localizationsDelegates: const [
+      child: const MaterialApp(
+        localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const CharactersPage(),
+        home: CharactersPage(),
       ),
     );
   }
