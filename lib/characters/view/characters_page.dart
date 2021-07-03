@@ -6,6 +6,8 @@ import 'package:malt_intro/characters/characters.dart';
 class CharactersPage extends StatelessWidget {
   const CharactersPage({Key? key}) : super(key: key);
 
+  static Page page() => const MaterialPage(child: CharactersPage());
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -27,9 +29,11 @@ class CharactersView extends StatelessWidget {
         builder: (context, state) {
           switch (state.status) {
             case CharactersStatus.failure:
-              return 
-              
-            
+              return const CharactersErrorView();
+            case CharactersStatus.loading:
+              return const CharactersLoadingView();
+            case CharactersStatus.success:
+              return CharactersLoadedView(characters: state.characters);
           }
         },
       ),
