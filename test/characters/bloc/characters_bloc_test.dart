@@ -7,7 +7,7 @@ import 'package:malt_intro/characters/characters.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rick_and_morty_api/rick_and_morty_api.dart';
 
-class MockCategoryRepository extends Mock implements CharacterRepository {}
+class MockCharacterRepository extends Mock implements CharacterRepository {}
 
 void main() {
   group('CharactersBloc', () {
@@ -15,7 +15,7 @@ void main() {
     late CharactersBloc characterBloc;
 
     setUp(() {
-      characterRepository = MockCategoryRepository();
+      characterRepository = MockCharacterRepository();
       characterBloc = CharactersBloc(
         characterRepository: characterRepository,
       );
