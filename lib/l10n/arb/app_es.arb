@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "errorViewMessage": "Contador",
+  "errorViewMessage": "Oops, algo ha ido mal",
   "@errorViewMessage": {
     "description": "Texto mostrado en la pantalla de error"
   }
