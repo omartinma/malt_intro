@@ -46,6 +46,9 @@ class CharacterItemView extends StatelessWidget {
             child: Center(
               child: Text(
                 character.name,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
